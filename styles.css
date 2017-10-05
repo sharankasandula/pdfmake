@@ -1,0 +1,44 @@
+/*@import url(http://fonts.googleapis.com/css?family=The+Girl+Next+Door);
+ * {
+  font-family: 'The Girl Next Door', cursive;
+}*/
+
+.title {
+  text-align: center;
+}
+
+.inline {
+	display: inline-flex;
+}
+
+.inline-notes {
+	display: inline-flex;
+	width: 100%;
+}
+
+
+.list-group-item {
+	width: 90%;
+}
+
+.list-group-item-button {
+	width: 10%;
+}
+
+.input-group-addon{
+	padding: 0;
+}
+
+.text-box{
+	margin-left: 2%;
+	margin-right : 3%;
+	width: 80%;
+}
+
+.add-note-button {
+	width: 	30%;
+}
+
+.large-save {
+	width: 100%;
+}

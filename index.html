@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="noteApp">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Fancy Note Taking App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Latest compiled and minified CSS Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional Bootstrap theme theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" crossorigin="anonymous">
+
+    <!-- Restangular Dependencies -->
+    <!-- Or use TAG number for specific version. New versions are auto deployed -->
+    
+
+    <!-- Jquesry dependency -->
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <!-- Angular -->
+    <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" data-semver="1.0.8"></script>
+    <script src="angular-base64.min.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+     <script type="text/javascript" src="restangular.js"></script>
+    <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script> -->
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="mainCtrl" ng-init="getAllNotes()">
+    <h1 class="text-center">Simple To-Do App</h1>
+    <div class="container">
+        <section class="jumbotron">
+            <center>
+                <div ng-show="triggerError" class="center">
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span>Dang it! Need authentication to connect to SAP servers. Bummer!
+                    </div>
+                </div>
+            </center>
+            <h2 class="title">Your To-do list</h2>
+            <br>
+            <div ng-if="todos==[]">
+                <br>
+                <h5 class="title">You have no notes right now.Type what you'd like to do and add a new entry.</h5>
+            </div>
+            <div class="list-group">
+
+                <div ng-repeat="alltodo in allTodos" class="inline-notes">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading" style="float: right">{{alltodo.ID}}</h4>
+                        <h4 class="list-group-item-heading" style="float: left">{{alltodo.NOTE}} </h4>
+                    </a>
+                    <button class="btn btn-danger list-group-item-button" ng-click="deleteNote(alltodo.ID)">Delete</button>
+                </div>
+            </div>
+        </section>
+        <!-- <h4>{{todos.title}}</h4> -->
+        <form ng-submit="AddNote()">
+            <div class="inline">
+                <!-- <button class="btn btn-primary btn-lg add-button" ng-click="toggleAddNote()">+</button> -->
+                <div class="input-group input-group-lg text-box">
+                    <span class="input-group-addon" id="sizing-addon1">I would like to</span>
+                    <input type="text" class="form-control" ng-model="note" aria-describedby="sizing-addon1" >
+                </div>
+                <button class="btn btn-success btn-lg save-button" ng-click="AddNote()" ng-disabled="!note">Add Note</button>
+            </div>
+        </form>
+        <br>
+    </div>
+   
+</body>
+
+</html>
